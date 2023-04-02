@@ -408,7 +408,7 @@ namespace ConsoleApp_11_6_2022
             //This makes 10 generated guitars.
             for (int i = 0; i < 10; i++)
             {
-                Guitar generatedGuitar = GuitarGenerator.GenerateGuitar();
+                Guitar generatedGuitar = RandomGenerator.GenerateGuitar();
                 newShop.AddGuitar(generatedGuitar);
             }
             return newShop;
