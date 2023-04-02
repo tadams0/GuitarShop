@@ -39,33 +39,56 @@ namespace ConsoleApp_11_6_2022
 
         public static Guitar GenerateGuitar()
         {
-            Guitar randomGuitar = new Guitar(GetRandomBrand());
+            decimal priceMultiplier = 1;
+            Guitar randomGuitar = new Guitar(GetRandomBrand(out priceMultiplier));
 
-            decimal randomPrice = random.Next(100, 1501);
+            decimal randomPrice = random.Next(100, 1101) * priceMultiplier;
             randomPrice = Math.Round(randomPrice / 10) * 10;
             randomPrice -= 0.01M;
             randomGuitar.Price = randomPrice;
             return randomGuitar;
 
         }
-        public static string GetRandomBrand()
+        public static string GetRandomBrand(out decimal priceMultiplier)
         {
+            priceMultiplier = 1;
+
             string guitarBrand;
-            int randomBrand = random.Next(4);
+            int randomBrand = random.Next(8);
 
             switch (randomBrand)
             {
                 case 0:
                     guitarBrand = "Fender";
+                    priceMultiplier = 1.5M;
                     break;
                 case 1:
                     guitarBrand = "Taylor";
+                    priceMultiplier = 0.35M;
                     break;
                 case 2:
                     guitarBrand = "ZachsGuitars";
+                    priceMultiplier = 10M;
+                    break;
+                case 3:
+                    guitarBrand = "Gibson";
+                    priceMultiplier = 3M;
+                    break;
+                case 4:
+                    guitarBrand = "Epiphone";
+                    priceMultiplier = 0.5M;
+                    break;
+                case 5:
+                    guitarBrand = "Ibanez";
+                    priceMultiplier = 1M;
+                    break;
+                case 6:
+                    guitarBrand = "Rickenbacker";
+                    priceMultiplier = 5.5M;
                     break;
                 default:
                     guitarBrand = "Squire";
+                    priceMultiplier = 0.8M;
                     break;
             }
 
@@ -99,7 +122,7 @@ namespace ConsoleApp_11_6_2022
             //This makes numberOfGuitars generated guitars.
             for (int i = 0; i < numberOfGuitars; i++)
             {
-                Guitar generatedGuitar = GuitarGenerator.GenerateGuitar();
+                Guitar generatedGuitar = GenerateGuitar();
                 newShop.AddGuitar(generatedGuitar);
             }
             return newShop;
