@@ -53,21 +53,20 @@ namespace ConsoleApp_11_6_2022
             string guitarBrand;
             int randomBrand = random.Next(4);
 
-            if (randomBrand == 0)
+            switch (randomBrand)
             {
-                guitarBrand = "Fender";
-            }
-            else if (randomBrand == 1)
-            {
-                guitarBrand = "Taylor";
-            }
-            else if (randomBrand == 2)
-            {
-                guitarBrand = "ZachsGuitars";
-            }
-            else
-            {
-                guitarBrand = "Squire";
+                case 0:
+                    guitarBrand = "Fender";
+                    break;
+                case 1:
+                    guitarBrand = "Taylor";
+                    break;
+                case 2:
+                    guitarBrand = "ZachsGuitars";
+                    break;
+                default:
+                    guitarBrand = "Squire";
+                    break;
             }
 
             return guitarBrand;
